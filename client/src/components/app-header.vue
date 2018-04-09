@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>{{ msg }}</h1>
+    <h1 class="title">{{ msg }}</h1>
   </header>
 </template>
 
@@ -9,14 +9,18 @@ export default {
   name: 'appHeader',
   data () {
     return {
-      msg: 'I am the header component form components folder'
+      msg: 'MATH'
     }
   }
 }
 </script>
 
 <style scoped>
-* {
-  background-color: pink;
+.title {
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  height: 100%;
+  justify-content: center;
 }
 </style>

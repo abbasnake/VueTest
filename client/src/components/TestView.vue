@@ -1,6 +1,7 @@
 <template>
-  <div class="hello">
+  <div>
     <h1>{{ msg }}</h1>
+    <h2>{{ $route.params.testID }}</h2>
   </div>
 </template>
 

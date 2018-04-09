@@ -14,7 +14,7 @@ export default new Router({
       component: BeginView
     },
     {
-      path: '/test',
+      path: '/test/:testID',
       name: 'TestView',
       component: TestView
     },

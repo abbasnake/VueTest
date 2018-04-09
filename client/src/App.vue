@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="l-app">
     <app-header></app-header>
     <router-view/>
   </div>
@@ -18,12 +18,15 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html, body, h1, h2, h3, h4, h5, h6 {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.l-app {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  height: 100vh;
 }
 </style>
