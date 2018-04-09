@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import BeginView from '@/components/BeginView'
+import TestView from '@/components/TestView'
+import ResultView from '@/components/ResultView'
 
 Vue.use(Router)
 
@@ -8,8 +10,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'BeginView',
+      component: BeginView
+    },
+    {
+      path: '/test',
+      name: 'TestView',
+      component: TestView
+    },
+    {
+      path: '/result',
+      name: 'ResultView',
+      component: ResultView
     }
   ]
 })
