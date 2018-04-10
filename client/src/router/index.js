@@ -10,6 +10,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/begin'
+    },
+    {
+      path: '/begin',
       name: 'BeginView',
       component: BeginView
     },
