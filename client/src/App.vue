@@ -16,6 +16,10 @@ html, body, p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
 }
+
+* {
+  /*font-family: Roboto;*/
+}
 </style>
 
 <style lang="scss" scoped>
@@ -23,7 +27,7 @@ html, body, p, h1, h2, h3, h4, h5, h6 {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 2fr 2fr 1fr;
-  grid-template-rows: 100px 2fr 2fr 1fr;
+  grid-template-rows: 8vh 2fr 2fr 1fr;
   &__view {
     background-color: rgb(200, 200, 200);
     border: 2px solid black;

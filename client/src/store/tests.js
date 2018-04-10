@@ -22,7 +22,7 @@ const tests = {
   test2: {
     id: 2,
     name: 'Test Two',
-    description: 'Test two is about bSDFSDFSDF',
+    description: 'Test two is about testing the blah blah of the blah blah blahddy blah',
     question1: {
       question: '20 + 20',
       answer: '40',

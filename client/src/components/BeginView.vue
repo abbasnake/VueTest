@@ -1,23 +1,32 @@
 <template>
   <div class="view">
-
     <h2 class="view__header">CHOOSE TEST</h2>
-    <form-begin-view class="view__form"></form-begin-view>
-    <p class="view__test-description"><!-- {{ testInfo }} --></p>
 
+    <form-choose
+      class="view__form"
+      @changeDescription="changeDescription($event)"
+    ></form-choose>
+
+    <p class="view__test-description">{{ testDescription }}</p>
   </div>
 </template>
 
 <script>
-import formBeginView from '@/components/formBeginView'
+import formChoose from '@/components/formChoose'
 
 export default {
   name: 'BeginView',
   components: {
-    'form-begin-view': formBeginView
+    'form-choose': formChoose
   },
   data () {
     return {
+      testDescription: ''
+    }
+  },
+  methods: {
+    changeDescription (description) {
+      this.testDescription = description
     }
   }
 }
@@ -29,13 +38,13 @@ export default {
   grid-template-rows: auto auto 2fr;
   grid-template-columns: 1fr;
   &__header{
-    border: 1px solid red;
-  }
-  &__form {
-    border: 1px solid green;
+    // border: 1px solid red;
+    padding: 5px;
+    text-align: center;
   }
   &__test-description {
     border: 1px solid blue;
+    padding: 5px;
   }
 }
 </style>
