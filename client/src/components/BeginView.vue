@@ -1,58 +1,41 @@
 <template>
-  <div class="view-begin">
+  <div class="view">
 
-    <h2>CHOOSE TEST</h2>
-
-    <form @submit.prevent="onSubmit" method="POST">
-      <input type="text" placeholder="Enter Name" name="username" required v-model="username">
-      <select name="test" v-model="selected">
-        <option v-for="test in tests" :key="test.id">
-          {{ test.name }}
-        </option>
-      </select>
-
-      <button type="submit">LET'S TEST</button>
-    </form>
-    <p>{{ testInfo }}</p>
+    <h2 class="view__header">CHOOSE TEST</h2>
+    <form-begin-view class="view__form"></form-begin-view>
+    <p class="view__test-description"><!-- {{ testInfo }} --></p>
 
   </div>
 </template>
 
 <script>
-
-import tests from '../store/tests.js'
+import formBeginView from '@/components/formBeginView'
 
 export default {
   name: 'BeginView',
+  components: {
+    'form-begin-view': formBeginView
+  },
   data () {
     return {
-      tests,
-      testChoice: 'testChoice',
-      username: '',
-      selected: ''
-    }
-  },
-  computed: {
-    testInfo () {
-      for (let test in this.tests) {
-        if (this.selected === this.tests[test].name) {
-          return this.tests[test].description
-        }
-      }
-    }
-  },
-  methods: {
-    onSubmit () {
-      this.$router.push({path: `/test/${this.testChoice}`})
-      console.log(this.username)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .view-begin {
-    background-color: pink;
-    padding: 10px;
+.view {
+  display: grid;
+  grid-template-rows: auto auto 2fr;
+  grid-template-columns: 1fr;
+  &__header{
+    border: 1px solid red;
   }
+  &__form {
+    border: 1px solid green;
+  }
+  &__test-description {
+    border: 1px solid blue;
+  }
+}
 </style>
