@@ -2,7 +2,7 @@
   <div class="view">
     <h2 class="view__header">TESTING</h2>
     <div class="view__test">
-      <form-test :test="getTest()"></form-test>
+      <form-test v-for="question in questions" :key="question.id" :question="question"></form-test>
     </div>
   </div>
 </template>
@@ -18,13 +18,14 @@ export default {
   },
   data () {
     return {
-      tests
+      tests,
+      questions: this.getQuestions()
     }
   },
   methods: {
-    getTest () {
+    getQuestions () {
       const testName = `test${this.$route.params.testNumber}`
-      return tests[testName]
+      return tests[testName].questions
     }
   }
 }
@@ -36,8 +37,11 @@ export default {
   grid-template-rows: auto 2fr;
   grid-template-columns: 1fr;
   &__header {
-    border: 1px solid red;
     text-align: center;
+  }
+  &__test {
+    border: 1px solid purple;
+    padding: 5px;
   }
 }
 </style>
