@@ -13,8 +13,7 @@
 
       <button type="submit">LET'S TEST</button>
     </form>
-
-    {{ testInfo }}
+    <p>{{ testInfo }}</p>
 
   </div>
 </template>
@@ -35,9 +34,9 @@ export default {
   },
   computed: {
     testInfo () {
-      for (let prop in this.tests) {
-        if (this.selected === this.tests[prop].name) {
-          return this.tests[prop].description
+      for (let test in this.tests) {
+        if (this.selected === this.tests[test].name) {
+          return this.tests[test].description
         }
       }
     }
