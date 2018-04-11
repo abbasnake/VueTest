@@ -40,7 +40,8 @@ export default {
   },
   methods: {
     onSubmit () {
-      this.$router.push({path: `/test/${this.getTestNumber()}`})
+      // this.$router.push({path: `/test/${this.getTestNumber()}`})
+      console.log(this.username)
     },
     onChange (selected) {
       this.$emit('changeDescription', this.getDescription(selected))
