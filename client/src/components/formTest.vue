@@ -3,38 +3,23 @@
 
       <h3 class="form__question">Question: {{ currentQuestion }}</h3>
 
-      <label
-        class="form__label"
-        :for="`${currentQuestion}-${currentAnswer}`"
-      >
-        {{ currentAnswer }}
-      </label>
-      <input
-        class="form__answer"
-        :id="`${currentQuestion}-${currentAnswer}`"
-        :value="currentAnswer"
-        name="answer"
-        type="radio"
-        required
-        v-model="picked"
-      >
-
-      <template v-for="fake in fakeAnswers">
+      <template v-for="answer in allAnswers">
         <!-- eslint-disable --> 
         <label
           class="form__label"
-          :for="`${currentQuestion}-${fake}`"
+          :for="`${currentQuestion}-${answer}`"
         >
-          {{ fake }}
+          {{ answer }}
         </label> 
         <!-- eslint-disable --> 
         <input
           class="form__answer"
-          :id="`${currentQuestion}-${fake}`"
-          :value="fake"
+          :id="`${currentQuestion}-${answer}`"
+          :value="answer"
           name="answer"
           type="radio"
           v-model="picked"
+          required
         >
       </template>
 
@@ -53,13 +38,25 @@ export default {
       currentQuestion: this.question.question,
       currentAnswer: this.question.answer,
       fakeAnswers: this.question.fakes,
+      allAnswers: [],
       picked: ''
     }
   },
   methods: {
     submitAnswer (userAnswer) {
-      console.log(`Question was ${this.currentQuestion}, correct answer was ${this.currentAnswer}, user answered ${userAnswer}`)
+      console.log('---------------')
+      console.log(`Question ${this.currentQuestion}`)
+      console.log(`Correct answer ${this.currentAnswer}`)
+      console.log(`User answered ${userAnswer}`)
+    },
+    returnAllAnswers () {
+      let arr = this.question.fakes
+      arr.push(this.question.answer)
+      return arr
     }
+  },
+  mounted () {
+    this.allAnswers = this.returnAllAnswers()
   }
 }
 </script>
