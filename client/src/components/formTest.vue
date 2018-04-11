@@ -5,15 +5,8 @@
 
       <template v-for="answer in allAnswers">
         <!-- eslint-disable --> 
-        <label
-          class="form__label"
-          :for="`${currentQuestion}-${answer}`"
-        >
-          {{ answer }}
-        </label> 
-        <!-- eslint-disable --> 
         <input
-          class="form__answer"
+          class="form__radio"
           :id="`${currentQuestion}-${answer}`"
           :value="answer"
           name="answer"
@@ -21,6 +14,10 @@
           v-model="picked"
           required
         >
+        <!-- eslint-disable --> 
+        <label class="form__label" :for="`${currentQuestion}-${answer}`">
+          {{ answer }}
+        </label> 
       </template>
 
       <button class="form__button">Done</button>
@@ -52,6 +49,7 @@ export default {
     returnAllAnswers () {
       let arr = this.question.fakes
       arr.push(this.question.answer)
+      // need to shuffle array here as well
       return arr
     }
   },
@@ -70,19 +68,28 @@ export default {
       grid-column: 1/3;
       text-align: center;
     }
-    &__label {
-      // border: 1px solid white;
-      text-align: right;
-      padding-right: 5px;
-    }
-    &__answer {
+    &__radio {
       // outline: 1px solid white;
       margin: 0;
       margin-top: 2px;
+      display: none;
+      &:checked + .form__label{
+        background-color: firebrick;
+      }
+    }
+    &__label {
+      border: 1px solid white;
+      grid-column: 1/3;
+      text-align: center;
+      padding-right: 5px;
+      &:hover {
+        border: 1px solid black;
+      }
     }
     &__button {
+      grid-column: 1/3;
+      margin: 0 auto;
       width: auto;
-      justify-self: end;
     }
   }
 </style>
