@@ -1,14 +1,20 @@
 <template>
-    <form class="form">
-      <h3 class="form__question">Question: {{ question.question }}</h3>
-      <label class="form__label" for="">{{ question.answer }}</label>
-      <input class="form__answer" name="answer" type="radio">
-      <template v-for="fake in question.fakes">
+    <form class="form" @submit.prevent="submitAnswer" method="POST">
+
+      <h3 class="form__question">Question: {{ currentQuestion }}</h3>
+
+      <label class="form__label" :for="`${currentQuestion}-${currentAnswer}`">{{ currentAnswer }}</label>
+      <input class="form__answer" :id="`${currentQuestion}-${currentAnswer}`" name="answer" type="radio" required>
+
+      <template v-for="fake in fakeAnswers">
         <!-- eslint-disable --> 
-        <label class="form__label" for=""> {{ fake }} </label> 
+        <label class="form__label" :for="`${currentQuestion}-${fake}`"> {{ fake }} </label> 
         <!-- eslint-disable --> 
-        <input class="form__answer" name="answer" type="radio">
+        <input class="form__answer" :id="`${currentQuestion}-${fake}`" name="answer" type="radio">
       </template>
+
+      <button class="form__button">Submit</button>
+
     </form>
 </template>
 
@@ -20,6 +26,14 @@ export default {
   },
   data () {
     return {
+      currentQuestion: this.question.question,
+      currentAnswer: this.question.answer,
+      fakeAnswers: this.question.fakes
+    }
+  },
+  methods: {
+    submitAnswer () {
+      console.log('answer submitted')
     }
   }
 }
@@ -27,6 +41,7 @@ export default {
 
 <style lang="scss" scoped>
   .form {
+    border: 1px solid red;
     display: grid;
     grid-template-columns: 1fr 1fr;
     &__question {
@@ -42,6 +57,10 @@ export default {
       // outline: 1px solid white;
       margin: 0;
       margin-top: 2px;
+    }
+    &__button {
+      width: auto;
+      justify-self: end;
     }
   }
 </style>
