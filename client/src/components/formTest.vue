@@ -1,5 +1,9 @@
 <template>
-    <form class="form" @submit.prevent="submitAnswer(picked)" method="POST">
+    <form
+      class="form"
+      @submit.prevent="submitAnswer(picked)"
+      method="POST"
+    >
 
       <h3 class="form__question">Question: {{ currentQuestion }}</h3>
 
@@ -19,8 +23,10 @@
           {{ answer }}
         </label> 
       </template>
-
-      <button v-if="picked" class="form__button">Done</button>
+      
+      <transition name="bounce">
+        <button v-if="picked" class="form__button">Done</button>
+      </transition>
     </form>
 </template>
 
@@ -65,6 +71,7 @@ export default {
     display: grid;
     grid-gap: 2px;
     grid-template-columns: 1fr 1fr;
+    padding: 5px;
     &__question {
       grid-column: 1/3;
       text-align: center;
@@ -91,6 +98,21 @@ export default {
       grid-column: 1/3;
       margin: 0 auto;
       width: auto;
+    }
+  }
+
+  .bounce-enter-active {
+  animation: bounce-in .9s;
+  }
+  .bounce-leave-active {
+    animation: bounce-in .9s reverse;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
     }
   }
 </style>
