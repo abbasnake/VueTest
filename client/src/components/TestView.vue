@@ -2,7 +2,11 @@
   <div class="view">
     <h2 class="view__header">TESTING</h2>
     <div class="view__test">
-      <form-test v-for="question in questions" :key="question.id" :question="question"></form-test>
+      <form-test
+        v-for="question in questions"
+        :key="question.id"
+        :question="question"
+      ></form-test>
     </div>
   </div>
 </template>

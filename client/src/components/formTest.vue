@@ -1,20 +1,44 @@
 <template>
-    <form class="form" @submit.prevent="submitAnswer" method="POST">
+    <form class="form" @submit.prevent="submitAnswer(picked)" method="POST">
 
       <h3 class="form__question">Question: {{ currentQuestion }}</h3>
 
-      <label class="form__label" :for="`${currentQuestion}-${currentAnswer}`">{{ currentAnswer }}</label>
-      <input class="form__answer" :id="`${currentQuestion}-${currentAnswer}`" name="answer" type="radio" required>
+      <label
+        class="form__label"
+        :for="`${currentQuestion}-${currentAnswer}`"
+      >
+        {{ currentAnswer }}
+      </label>
+      <input
+        class="form__answer"
+        :id="`${currentQuestion}-${currentAnswer}`"
+        :value="currentAnswer"
+        name="answer"
+        type="radio"
+        required
+        v-model="picked"
+      >
 
       <template v-for="fake in fakeAnswers">
         <!-- eslint-disable --> 
-        <label class="form__label" :for="`${currentQuestion}-${fake}`"> {{ fake }} </label> 
+        <label
+          class="form__label"
+          :for="`${currentQuestion}-${fake}`"
+        >
+          {{ fake }}
+        </label> 
         <!-- eslint-disable --> 
-        <input class="form__answer" :id="`${currentQuestion}-${fake}`" name="answer" type="radio">
+        <input
+          class="form__answer"
+          :id="`${currentQuestion}-${fake}`"
+          :value="fake"
+          name="answer"
+          type="radio"
+          v-model="picked"
+        >
       </template>
 
-      <button class="form__button">Submit</button>
-
+      <button class="form__button">Done</button>
     </form>
 </template>
 
@@ -28,12 +52,13 @@ export default {
     return {
       currentQuestion: this.question.question,
       currentAnswer: this.question.answer,
-      fakeAnswers: this.question.fakes
+      fakeAnswers: this.question.fakes,
+      picked: ''
     }
   },
   methods: {
-    submitAnswer () {
-      console.log('answer submitted')
+    submitAnswer (userAnswer) {
+      console.log(`Question was ${this.currentQuestion}, correct answer was ${this.currentAnswer}, user answered ${userAnswer}`)
     }
   }
 }
