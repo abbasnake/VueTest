@@ -20,7 +20,7 @@
         </label> 
       </template>
 
-      <button class="form__button">Done</button>
+      <button v-if="picked" class="form__button">Done</button>
     </form>
 </template>
 
@@ -63,6 +63,7 @@ export default {
   .form {
     border: 1px solid red;
     display: grid;
+    grid-gap: 2px;
     grid-template-columns: 1fr 1fr;
     &__question {
       grid-column: 1/3;
@@ -74,7 +75,7 @@ export default {
       margin-top: 2px;
       display: none;
       &:checked + .form__label{
-        background-color: firebrick;
+        background-color: rgb(255, 100, 100);
       }
     }
     &__label {
