@@ -7,7 +7,7 @@
       @changeDescription="changeDescription($event)"
     ></form-choose> -->
 
-    <form class="view__form" @submit.prevent="onSubmit" method="POST">
+    <form class="view__form" @submit.prevent="onSubmit($event)" method="POST">
       <input type="text" placeholder="Enter Name" name="username" v-model="username" required>
       <select name="test" @change="changeDescription($event)" required>
         <option value="" selected disabled>choose</option>
@@ -47,7 +47,8 @@ export default {
     changeDescription (e) {
       this.$store.dispatch('setChosenTest', e.target.value)
     },
-    onSubmit () {
+    onSubmit (e) {
+      console.log(e.target[0].value) // another way to get input data, is it better
       this.$store.dispatch('setUsername', this.username)
     }
   }
