@@ -55,6 +55,7 @@ $background-color: rgb(233, 233, 233);
     background-color: $background-color;
     border-radius: $border-radius;
     margin: 0 auto;
+    max-width: 220px;
     padding: $padding;
     width: 75%;
   }
@@ -62,6 +63,7 @@ $background-color: rgb(233, 233, 233);
     background-color: $background-color;
     border-radius: $border-radius;
     margin: 0 auto;
+    max-width: 220px;
     padding: $padding;
     width: 75%;
   }

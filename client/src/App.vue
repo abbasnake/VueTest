@@ -17,13 +17,13 @@ GLOBAL STYLES / RESET
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 html, body, p, h1, h2, h3, h4, h5, h6 {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 * {
-  font-family: 'Open Sans', sans-serif;;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
 }
 </style>
 
@@ -38,12 +38,20 @@ html, body, p, h1, h2, h3, h4, h5, h6 {
     background-color: rgb(200, 200, 200);
     border: 2px solid black;
     border-radius: 5px;
-    grid-column: 2/4;
+    grid-column: 1/5;
     grid-row: 2/3;
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 500px;
     padding: 10px;
-    width: 90%;
+    width: 100%;
+  }
+}
+
+@media (min-width: 295px) {
+  .app {
+    &__view {
+      grid-column: 2/4;
+    }
   }
 }
 </style>

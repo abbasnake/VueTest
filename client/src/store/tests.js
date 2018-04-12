@@ -2,7 +2,7 @@ const tests = {
   test1: {
     id: 1,
     name: 'Test One',
-    description: 'Test one Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat velit, commodo in hendrerit nec, cursus at purus. Pellentesque auctor orci id urna mattis, ut molestie ex volutpat. Mauris porta urna accumsan fermentum facilisis. Aenean nisl tortor, iaculis eu ligula eget, blandit luctus diam. Aenean lacinia nibh ac cursus suscipit. Ut non quam nec ipsum gravida rutrum.',
+    description: 'Test one is about Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat velit, commodo in hendrerit nec, cursus at purus.',
     questions: [
       {
         id: 1,

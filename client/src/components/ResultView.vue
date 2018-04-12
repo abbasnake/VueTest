@@ -31,9 +31,9 @@ export default {
 .view {
   display: grid;
   grid-template-rows: auto 1fr;
+  text-align: center;
   &__header {
     padding: 5px;
-    text-align: center;
   }
   &__score {
     padding: 5px;

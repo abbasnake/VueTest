@@ -28,12 +28,14 @@ export default {
   grid-template-rows: auto auto 2fr;
   grid-template-columns: 1fr;
   &__header{
-    // border: 1px solid red;
     padding: 5px;
     text-align: center;
   }
   &__test-description {
-    border: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
     border-radius: 5px;
     padding: 5px;
     text-align: center;
