@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     username: '',
     chosenTest: '',
+    answers: [],
     tests
   },
   getters: {
@@ -55,6 +56,9 @@ export default new Vuex.Store({
     },
     setChosenTest: (state, payload) => {
       state.chosenTest = payload
+    },
+    addAnswer: (state, payload) => {
+      state.answers.push(payload)
     }
   },
   actions: {
@@ -63,6 +67,9 @@ export default new Vuex.Store({
     },
     setChosenTest: (context, payload) => {
       context.commit('setChosenTest', payload)
+    },
+    addAnswer: (context, payload) => {
+      context.commit('addAnswer', payload)
     }
   }
 })

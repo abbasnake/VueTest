@@ -5,11 +5,11 @@
       <h3>{{ chosenTest }}</h3>
 
       <!-- eslint-disable -->
-      <form v-for="question in questions" @submit.prevent="onSubmit($event)">
+      <form v-for="(question, index) in questions" v-show="show(index)" @submit.prevent="onSubmit(question.question)">
         <h4>Question: {{ question.question }}</h4>
         <template v-for="answer in question.fakes">
           <!-- eslint-disable -->
-          <input type="radio" name="answer" :id="`${question.question}-${answer}`" >
+          <input required v-model="picked" :value="answer" type="radio" name="answer" :id="`${question.question}-${answer}`" >
           <label :for="`${question.question}-${answer}`">{{answer}}</label>
         </template>
         <button type="submit">Done</button>
@@ -23,6 +23,8 @@ export default {
   name: 'TestView',
   data () {
     return {
+      picked: '',
+      currentQuestionIndex: 0
     }
   },
   computed: {
@@ -34,6 +36,21 @@ export default {
     }
   },
   methods: {
+    onSubmit (question) {
+      this.$store.dispatch('addAnswer', {
+        question: question,
+        answer: this.picked
+      })
+      this.picked = ''
+      this.currentQuestionIndex++
+      if (this.currentQuestionIndex >= this.questions.length) {
+        // go to result page
+        this.$router.push({path: '/result'})
+      }
+    },
+    show (i) {
+      return this.currentQuestionIndex === i
+    }
   }
 }
 </script>
