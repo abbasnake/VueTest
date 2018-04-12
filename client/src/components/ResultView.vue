@@ -4,7 +4,7 @@
     <p class="view__score">
       Thanks <strong>{{ username }}</strong>,
       you answered <strong>{{ score }}</strong>
-      questions correctly
+      question(s) correctly
     </p>
   </div>
 </template>

@@ -14,7 +14,7 @@ export default new Vuex.Store({
   getters: {
     username: state => state.username,
     chosenTest: state => state.chosenTest,
-    testCount: state => Object.keys(state.tests).length,
+    testCount: state => Object.keys(state.tests).length, // not used
     testNames: state => {
       const arr = []
       for (let test in state.tests) {

@@ -14,8 +14,8 @@
         </template>
         <button type="submit">Done</button>
       </form>
+      
     </div>
-    <!-- <div v-for="arr in answers">{{arr}}</div> -->
   </div>
 </template>
 

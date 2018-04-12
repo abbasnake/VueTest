@@ -21,6 +21,12 @@ const tests = {
         question: '1 + 1',
         answer: '2',
         fakes: ['1', '4', '55', '100']
+      },
+      {
+        id: 4,
+        question: '7 + 7',
+        answer: '14',
+        fakes: ['1', '4', '55', '100', '111']
       }
     ]
   },
