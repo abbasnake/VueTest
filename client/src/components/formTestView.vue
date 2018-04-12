@@ -66,7 +66,7 @@ export default {
       })
       this.picked = ''
       this.currentQuestionIndex++
-      this.progress = Math.floor(100/this.questions.length * (this.currentQuestionIndex))
+      this.progress = Math.floor(100 / this.questions.length * (this.currentQuestionIndex))
       if (this.currentQuestionIndex >= this.questions.length) {
         // go to result page
         this.$router.push({path: '/result'})
@@ -133,7 +133,7 @@ export default {
       border-left: 2px solid black;
       border-radius: 5px;
       font-size: 100%;
-      margin: 0 auto;
+      grid-column: 1/2;
       min-width: 40px;
       padding: 5px;
       width: auto;
@@ -146,10 +146,21 @@ export default {
       border-left: 2px solid black;
       border-radius: 5px;
       cursor: pointer;
+      grid-column: 2/3;
       margin: 0 auto;
       padding: 5px;
       &:hover {
         background-color: white;
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .test {
+    &__form {
+      &__inputs {
+        grid-column: auto;
       }
     }
   }

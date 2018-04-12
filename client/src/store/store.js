@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import tests from './tests'
+import tests from './tests' // uncomment if using local db (./tests.js)
 
 Vue.use(Vuex)
 
@@ -9,12 +9,12 @@ export default new Vuex.Store({
     username: '',
     chosenTest: '',
     userAnswers: [],
-    tests
+    tests, // uncomment if using local db (./tests.js) + comment out the line below
+    // tests: {} // comment out if using local db
   },
   getters: {
     username: state => state.username,
     chosenTest: state => state.chosenTest,
-    testCount: state => Object.keys(state.tests).length, // not used
     testNames: state => {
       const arr = []
       for (let test in state.tests) {
@@ -75,7 +75,6 @@ export default new Vuex.Store({
           }
         }
       }
-      // correctAnswers = state.userAnswers[0].answer
       return correctAnswers
     }
   },
@@ -88,17 +87,54 @@ export default new Vuex.Store({
     },
     addAnswer: (state, payload) => {
       state.userAnswers.push(payload)
+    },
+    fetchTests: (state, payload) => {
+      state.tests = payload
     }
   },
   actions: {
     setUsername: (context, payload) => {
       context.commit('setUsername', payload)
+      fetch('http://localhost:8081/api/username', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username: payload})
+      })
+        .then(console.log('username set'))
     },
     setChosenTest: (context, payload) => {
       context.commit('setChosenTest', payload)
+      fetch('http://localhost:8081/api/chosen_test', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({chosenTest: payload})
+      })
+        .then(console.log('test chosen'))
     },
     addAnswer: (context, payload) => {
       context.commit('addAnswer', payload)
+      fetch('http://localhost:8081/api/answer', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({answer: payload})
+      })
+        .then(console.log('answer added'))
+    },
+    fetchTests: context => {
+      fetch('http://localhost:8081/api/tests')
+        .then(res => res.json())
+        .then(data => {
+          context.commit('fetchTests', data.tests)
+        })
     }
   }
 })

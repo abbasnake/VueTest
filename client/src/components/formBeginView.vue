@@ -34,7 +34,6 @@ export default {
       this.$store.dispatch('setChosenTest', e.target.value)
     },
     onSubmit (e) {
-      // console.log(e.target[0].value) // another way to get input data(username), is it better?
       this.$store.dispatch('setUsername', this.username)
       this.$router.push({path: `/test/${this.chosenTestNumber}`})
     }

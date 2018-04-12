@@ -58,7 +58,7 @@ const tests = {
   test3: {
     id: 3,
     name: 'Test Three',
-    description: 'Test three is agogo yoyo',
+    description: 'Test three is about a young boy solving mysteries',
     questions: [
       {
         id: 1,

@@ -6,7 +6,15 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  created () {
+    // this.fetchTests() // comment out if using local db (./store/tests.js)
+  },
+  methods: {
+    fetchTests () {
+      this.$store.dispatch('fetchTests')
+    }
+  }
 }
 </script>
 
@@ -24,6 +32,10 @@ html, body, p, h1, h2, h3, h4, h5, h6 {
 * {
   font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
+  &::selection {
+    background-color: rgb(77, 77, 77);
+    color: white;
+  }
 }
 </style>
 
