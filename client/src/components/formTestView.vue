@@ -27,8 +27,11 @@
           {{answer}}
         </label>
       </div>
+      <div class="test__form__progress-bar" :style="{width: `${progress}%`}">
+        {{progress}}%
+      </div>
       <transition name="bounce">
-        <button class="test__form__button" type="submit" v-show="picked">Done</button>
+        <button class="test__form__button" type="submit" v-show="picked">Next</button>
       </transition>
     </form>
   </div>
@@ -40,6 +43,7 @@ export default {
   data () {
     return {
       picked: '',
+      progress: 0,
       currentQuestionIndex: 0
     }
   },
@@ -62,6 +66,7 @@ export default {
       })
       this.picked = ''
       this.currentQuestionIndex++
+      this.progress = Math.floor(100/this.questions.length * (this.currentQuestionIndex))
       if (this.currentQuestionIndex >= this.questions.length) {
         // go to result page
         this.$router.push({path: '/result'})
@@ -113,17 +118,39 @@ export default {
         border-bottom: 1px solid black;
         border-left: 1px solid black;
         border-radius: 5px;
+        cursor: pointer;
         width: 100%;
         &:hover {
           background-color: rgb(155, 155, 155);
         }
       }
     }
-    &__button {
+    &__progress-bar {
+      background-color: rgb(155, 155, 155);
+      border-top: 1px solid black;
+      border-right: 1px solid black;
+      border-bottom: 2px solid black;
+      border-left: 2px solid black;
       border-radius: 5px;
-      grid-column: 1/3;
+      font-size: 100%;
+      margin: 0 auto;
+      min-width: 40px;
+      padding: 5px;
+      width: auto;
+    }
+    &__button {
+      background-color: rgb(233, 233, 233);
+      border-top: 1px solid black;
+      border-right: 1px solid black;
+      border-bottom: 2px solid black;
+      border-left: 2px solid black;
+      border-radius: 5px;
+      cursor: pointer;
       margin: 0 auto;
       padding: 5px;
+      &:hover {
+        background-color: white;
+      }
     }
   }
 }

@@ -2,7 +2,7 @@
   <div class="view">
     <h2 class="view__header">RESULT</h2>
     <p class="view__score">
-      Thanks <strong>{{ username }}</strong>,
+      Thanks <strong class="view__score__username">{{ username }}</strong>,
       you answered <strong>{{ score }}</strong>
       question(s) correctly
     </p>
@@ -37,6 +37,9 @@ export default {
   }
   &__score {
     padding: 5px;
+    &__username {
+      color: rgb(144, 0, 0);
+    }
   }
 }
 </style>

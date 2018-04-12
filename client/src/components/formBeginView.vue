@@ -54,6 +54,7 @@ $background-color: rgb(233, 233, 233);
   &__input {
     background-color: $background-color;
     border-radius: $border-radius;
+    cursor: pointer;
     margin: 0 auto;
     max-width: 220px;
     padding: $padding;
@@ -62,6 +63,7 @@ $background-color: rgb(233, 233, 233);
   &__select {
     background-color: $background-color;
     border-radius: $border-radius;
+    cursor: pointer;
     margin: 0 auto;
     max-width: 220px;
     padding: $padding;
@@ -69,9 +71,17 @@ $background-color: rgb(233, 233, 233);
   }
   &__button {
     background-color: $background-color;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
     border-radius: $border-radius;
+    cursor: pointer;
     margin: 0 auto;
     padding: $padding;
+    &:hover {
+        background-color: white;
+      }
   }
 }
 </style>
