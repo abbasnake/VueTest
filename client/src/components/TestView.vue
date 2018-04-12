@@ -7,7 +7,7 @@
       <!-- eslint-disable -->
       <form v-for="(question, index) in questions" v-show="show(index)" @submit.prevent="onSubmit(question.question)">
         <h4>Question: {{ question.question }}</h4>
-        <template v-for="answer in question.fakes">
+        <template v-for="answer in answers[index]">
           <!-- eslint-disable -->
           <input required v-model="picked" :value="answer" type="radio" name="answer" :id="`${question.question}-${answer}`" >
           <label :for="`${question.question}-${answer}`">{{answer}}</label>
@@ -15,6 +15,7 @@
         <button type="submit">Done</button>
       </form>
     </div>
+    <!-- <div v-for="arr in answers">{{arr}}</div> -->
   </div>
 </template>
 
@@ -33,6 +34,9 @@ export default {
     },
     questions () {
       return this.$store.getters.chosenTestQuestions
+    },
+    answers () {
+      return this.$store.getters.chosenTestAnswers
     }
   },
   methods: {
@@ -58,7 +62,7 @@ export default {
 <style lang="scss" scoped>
 .view {
   display: grid;
-  grid-template-rows: auto 2fr;
+  grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
   &__header {
     text-align: center;

@@ -1,6 +1,11 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div class="view">
+    <h2 class="view__header">RESULT</h2>
+    <p class="view__score">
+      Thanks <strong>{{ username }}</strong>,
+      you answered <strong>{{ score }}</strong>
+      questions correctly
+    </p>
   </div>
 </template>
 
@@ -9,13 +14,29 @@ export default {
   name: 'ResultView',
   data () {
     return {
-      msg: 'Welcome to ResultView'
+    }
+  },
+  computed: {
+    username () {
+      return this.$store.getters.username
+    },
+    score () {
+      return this.$store.getters.score
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style lang="scss" scoped>
+.view {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  &__header {
+    padding: 5px;
+    text-align: center;
+  }
+  &__score {
+    padding: 5px;
+  }
+}
 </style>

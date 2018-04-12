@@ -8,7 +8,7 @@ export default new Vuex.Store({
   state: {
     username: '',
     chosenTest: '',
-    answers: [],
+    userAnswers: [],
     tests
   },
   getters: {
@@ -48,6 +48,35 @@ export default new Vuex.Store({
         }
       }
       return questions
+    },
+    chosenTestAnswers: state => {
+      let arr = []
+      for (let test in state.tests) {
+        if (state.tests[test].name === state.chosenTest) {
+          for (let i = 0; i < state.tests[test].questions.length; i++) {
+            let answers = []
+            answers.push(state.tests[test].questions[i].answer)
+            answers = answers.concat(state.tests[test].questions[i].fakes)
+            arr.push(answers)
+            // needs a shuffle as well
+          }
+        }
+      }
+      return arr
+    },
+    score: state => {
+      let correctAnswers = 0
+      for (let test in state.tests) {
+        if (state.tests[test].name === state.chosenTest) {
+          for (let i = 0; i < state.userAnswers.length; i++) {
+            if (state.userAnswers[i].answer === state.tests[test].questions[i].answer) {
+              correctAnswers++
+            }
+          }
+        }
+      }
+      // correctAnswers = state.userAnswers[0].answer
+      return correctAnswers
     }
   },
   mutations: {
@@ -58,7 +87,7 @@ export default new Vuex.Store({
       state.chosenTest = payload
     },
     addAnswer: (state, payload) => {
-      state.answers.push(payload)
+      state.userAnswers.push(payload)
     }
   },
   actions: {
