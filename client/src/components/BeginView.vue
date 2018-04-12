@@ -40,7 +40,10 @@ export default {
       return this.$store.getters.testNames
     },
     testDescription () {
-      return this.$store.getters.testDescription
+      return this.$store.getters.chosenTestDescription
+    },
+    chosenTestNumber () {
+      return this.$store.getters.chosenTestNumber
     }
   },
   methods: {
@@ -48,8 +51,9 @@ export default {
       this.$store.dispatch('setChosenTest', e.target.value)
     },
     onSubmit (e) {
-      console.log(e.target[0].value) // another way to get input data, is it better
+      // console.log(e.target[0].value) // another way to get input data(username), is it better?
       this.$store.dispatch('setUsername', this.username)
+      this.$router.push({path: `/test/${this.chosenTestNumber}`})
     }
   }
 }

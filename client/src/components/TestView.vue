@@ -2,35 +2,38 @@
   <div class="view">
     <h2 class="view__header">TESTING</h2>
     <div class="view__test">
-      <form-test
-        v-for="question in questions"
-        :key="question.id"
-        :question="question"
-      ></form-test>
+      <h3>{{ chosenTest }}</h3>
+
+      <!-- eslint-disable -->
+      <form v-for="question in questions" @submit.prevent="onSubmit($event)">
+        <h4>Question: {{ question.question }}</h4>
+        <template v-for="answer in question.fakes">
+          <!-- eslint-disable -->
+          <input type="radio" name="answer" :id="`${question.question}-${answer}`" >
+          <label :for="`${question.question}-${answer}`">{{answer}}</label>
+        </template>
+        <button type="submit">Done</button>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
-import tests from '../store/tests.js'
-import formTest from '@/components/formTest'
-
 export default {
   name: 'TestView',
-  components: {
-    'form-test': formTest
-  },
   data () {
     return {
-      tests,
-      questions: this.getQuestions()
+    }
+  },
+  computed: {
+    chosenTest () {
+      return this.$store.getters.chosenTest
+    },
+    questions () {
+      return this.$store.getters.chosenTestQuestions
     }
   },
   methods: {
-    getQuestions () {
-      const testName = `test${this.$route.params.testNumber}`
-      return tests[testName].questions
-    }
   }
 }
 </script>

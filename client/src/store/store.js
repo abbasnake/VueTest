@@ -12,6 +12,7 @@ export default new Vuex.Store({
   },
   getters: {
     username: state => state.username,
+    chosenTest: state => state.chosenTest,
     testCount: state => Object.keys(state.tests).length,
     testNames: state => {
       const arr = []
@@ -20,7 +21,7 @@ export default new Vuex.Store({
       }
       return arr
     },
-    testDescription: (state) => {
+    chosenTestDescription: (state) => {
       let description = ''
       for (let test in state.tests) {
         if (state.tests[test].name === state.chosenTest) {
@@ -28,6 +29,24 @@ export default new Vuex.Store({
         }
       }
       return description
+    },
+    chosenTestNumber: (state) => {
+      let num = ''
+      for (let test in state.tests) {
+        if (state.tests[test].name === state.chosenTest) {
+          num = test.slice(-1)
+        }
+      }
+      return num
+    },
+    chosenTestQuestions: state => {
+      let questions = []
+      for (let test in state.tests) {
+        if (state.tests[test].name === state.chosenTest) {
+          questions = state.tests[test].questions
+        }
+      }
+      return questions
     }
   },
   mutations: {
