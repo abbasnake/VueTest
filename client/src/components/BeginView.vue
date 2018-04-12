@@ -33,8 +33,11 @@ export default {
     text-align: center;
   }
   &__test-description {
-    border: 1px solid blue;
+    border: 1px solid black;
+    border-radius: 5px;
     padding: 5px;
+    text-align: center;
+    width: 100%;
   }
 }
 </style>

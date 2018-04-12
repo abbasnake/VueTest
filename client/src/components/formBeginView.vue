@@ -43,21 +43,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$padding: 5px;
+$border-radius: 5px;
+$background-color: rgb(233, 233, 233);
+
 .form {
   display: grid;
   grid-gap: 5px;
-  padding: 5px;
+  padding: $padding;
   &__input {
+    background-color: $background-color;
+    border-radius: $border-radius;
     margin: 0 auto;
-    width: 50%;
+    padding: $padding;
+    width: 75%;
   }
   &__select {
+    background-color: $background-color;
+    border-radius: $border-radius;
     margin: 0 auto;
-    width: 50%;
+    padding: $padding;
+    width: 75%;
   }
   &__button {
+    background-color: $background-color;
+    border-radius: $border-radius;
     margin: 0 auto;
-    width: auto;
+    padding: $padding;
   }
 }
 </style>
